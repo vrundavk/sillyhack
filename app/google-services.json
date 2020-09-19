@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "28641657273",
+    "firebase_url": "https://siddu12-18ca0.firebaseio.com",
+    "project_id": "siddu12-18ca0",
+    "storage_bucket": "siddu12-18ca0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:28641657273:android:09894f1ad0ea11a4fe3668",
+        "android_client_info": {
+          "package_name": "com.example.siddu"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "28641657273-aqlh9rh466bt475qrelidfukbc9p8vhp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD-qqJ_JKGQHVOORdCE94komsU94LgeLo8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "28641657273-aqlh9rh466bt475qrelidfukbc9p8vhp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

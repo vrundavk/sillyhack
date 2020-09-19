@@ -20,35 +20,36 @@
     android:layout_height="match_parent">
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="20dp"
         android:text="Note Title"
-        android:background="@color/colorAccent"
+        android:background="@color/colorPrimary"
         android:ellipsize="end"
         android:maxLines="5"
         android:id="@+id/note_title"
-        android:textColor="@color/colorPrimary"
-        android:layout_weight="1"
+        android:textColor="@color/colorWhite"
+
 android:layout_marginBottom="0dp"
        ></TextView>
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/user_profile_image"
-        android:layout_width="103dp"
-        android:layout_height="89dp"
+        android:layout_width="105dp"
+        android:layout_height="123dp"
         android:layout_gravity="center"
         android:src="@drawable/thor"
         app:civ_border_color="@android:color/white"
         app:civ_border_width="2dp" />
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="0sp"
-        android:text="Time"
-        android:ellipsize="end"
         android:id="@+id/note_time"
+        android:layout_width="match_parent"
+        android:layout_height="24dp"
+        android:ellipsize="end"
         android:maxLines="1"
+        android:text="Time"
         android:textColor="@color/colorPrimary"
-        android:layout_weight="1"
+        android:textSize="13dp"
+
 
         ></TextView>
 </LinearLayout>

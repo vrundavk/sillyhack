@@ -27,6 +27,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.theartofdev.edmodo.cropper.CropImage;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -39,7 +40,6 @@ private EditText noteTitle, noteNote;
     private Uri ImageUri;
 private ImageView backButton, ImageSaveButton;
     private static final int GalleryPick=1;
-    private ProgressDialog loadingbar;
 
   private String  saveCurrentDate,saveCurrentTime;
 private TextView noteText;
@@ -80,16 +80,7 @@ ImageSaveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
             {
-                title= noteTitle.getText().toString().trim();
-                content =noteNote.getText().toString().trim();
-if(!TextUtils.isEmpty(title)&& !TextUtils.isEmpty(content)){
-
-    createNote();
-}else{
-    Toast.makeText(NewNoteActivity.this, "Write a Note with a title ",Toast.LENGTH_SHORT).show();
-
-}
-
+validateProduct();
             }
         });
     }
@@ -104,12 +95,23 @@ if(!TextUtils.isEmpty(title)&& !TextUtils.isEmpty(content)){
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+
         if(requestCode==GalleryPick && resultCode==RESULT_OK && data!=null){
             ImageUri=data.getData();
             ImageSaveButton.setImageURI(ImageUri);
         }
     }
+private void validateProduct(){
+    title= noteTitle.getText().toString().trim();
+    content =noteNote.getText().toString().trim();
+    if(!TextUtils.isEmpty(title)&& !TextUtils.isEmpty(content)){
 
+        createNote();
+    }else{
+        Toast.makeText(NewNoteActivity.this, "Write a Note  ",Toast.LENGTH_SHORT).show();
+
+    }
+}
     private void createNote(){
 
         Calendar calendar=Calendar.getInstance();
@@ -128,12 +130,12 @@ if(!TextUtils.isEmpty(title)&& !TextUtils.isEmpty(content)){
                     public void onFailure(@NonNull Exception e)
                     {
                         String message=e.toString();
-                        Toast.makeText(NewNoteActivity.this,"Error:"+message,Toast.LENGTH_SHORT).show();
+
                     }
                 }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                Toast.makeText(NewNoteActivity.this,"Image uploaded successfully",Toast.LENGTH_SHORT).show();
+
                 Task<Uri>urlTask=uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
                     @Override
                     public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception
@@ -150,7 +152,7 @@ if(!TextUtils.isEmpty(title)&& !TextUtils.isEmpty(content)){
                     {
                         if(task.isSuccessful()){
                             downloadImageUrl=task.getResult().toString();
-                            Toast.makeText(NewNoteActivity.this,"getting Product Image Url",Toast.LENGTH_SHORT).show();
+
                             saveProductInfoToDAtabase();
 
                         }

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/colorPrimary"
+    android:background="@color/colorAccent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
@@ -12,8 +12,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="My Notes"
-
-        android:textColor="@android:color/white"
+android:textStyle="bold"
+        android:textColor="@color/colorPrimary"
         android:textSize="33dp"
         android:layout_marginLeft="12dp" android:layout_marginTop="20dp"
         app:layout_constraintTop_toTopOf="parent"
@@ -29,7 +29,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/main_notes_list"
 
-        android:layout_width="423dp"
+        android:layout_width="match_parent"
         android:layout_height="583dp"></androidx.recyclerview.widget.RecyclerView>
 </LinearLayout>
     <LinearLayout
@@ -49,13 +49,13 @@
         android:layout_width="45dp"
         android:layout_height="45dp"
         android:layout_marginEnd="30dp"
-        android:background="@drawable/background_add_button"
+        android:background="@drawable/background_add"
         android:id="@+id/imageAddNoteMain"
         android:src="@drawable/ic_add_black_24dp"
         app:layout_constraintBottom_toTopOf="@id/layoutQuickAction"
         app:layout_constraintTop_toTopOf="@+id/layoutQuickAction"
         app:layout_constraintEnd_toEndOf="parent"
-        android:tint="@color/colorPrimary"
+        android:tint="@color/colorWhite"
         android:layout_marginRight="30dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

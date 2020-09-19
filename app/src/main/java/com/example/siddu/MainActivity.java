@@ -21,7 +21,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity
+
+{
+
 private TextView myNOtetext;
 private ImageView addNewNoteMain;
 private RecyclerView mNOtesList;
@@ -56,10 +59,18 @@ mNOtesList.setLayoutManager(gridLayoutManager);
                 .build();
         FirebaseRecyclerAdapter<Notes,NoteViewHolder>adapter=new FirebaseRecyclerAdapter<Notes, NoteViewHolder>(options) {
             @Override
-            protected void onBindViewHolder(@NonNull NoteViewHolder noteViewHolder, int i, @NonNull Notes notes) {
+            protected void onBindViewHolder(@NonNull NoteViewHolder noteViewHolder, int i, @NonNull final Notes notes) {
 noteViewHolder.textTitle.setText(notes.getNotetitle());
 noteViewHolder.textTime.setText(notes.getTime());
                 Picasso.get().load(notes.getImage()).into(noteViewHolder.personPicture);
+noteViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+Intent intent=new Intent(MainActivity.this,StartActivity.class);
+intent.putExtra("pid",notes.getPid());
+startActivity(intent);
+    }
+});
 
             }
 

@@ -34,12 +34,16 @@ private GridLayoutManager gridLayoutManager;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
         ProductsRef = FirebaseDatabase.getInstance().getReference().child("Notes");
         mNOtesList=findViewById(R.id.main_notes_list);
         gridLayoutManager=new GridLayoutManager(this,2, GridLayoutManager.VERTICAL,false);
 
         mNOtesList.setHasFixedSize(true);
-mNOtesList.setLayoutManager(gridLayoutManager);
+
+
+        mNOtesList.setLayoutManager(gridLayoutManager);
         myNOtetext=(TextView)findViewById(R.id.textMyNotes);
         addNewNoteMain=(ImageView)findViewById(R.id.imageAddNoteMain);
         addNewNoteMain.setOnClickListener(new View.OnClickListener() {
@@ -60,15 +64,22 @@ mNOtesList.setLayoutManager(gridLayoutManager);
         FirebaseRecyclerAdapter<Notes,NoteViewHolder>adapter=new FirebaseRecyclerAdapter<Notes, NoteViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull NoteViewHolder noteViewHolder, int i, @NonNull final Notes notes) {
-noteViewHolder.textTitle.setText(notes.getNotetitle());
-noteViewHolder.textTime.setText(notes.getTime());
+
+                noteViewHolder.textTitle.setText(notes.getNotetitle());
+
+                noteViewHolder.textTime.setText(notes.getTime());
                 Picasso.get().load(notes.getImage()).into(noteViewHolder.personPicture);
-noteViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+
+                noteViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
-Intent intent=new Intent(MainActivity.this,StartActivity.class);
-intent.putExtra("pid",notes.getPid());
-startActivity(intent);
+
+        Intent intent=new Intent(MainActivity.this,StartActivity.class);
+
+        intent.putExtra("pid",notes.getPid());
+
+        startActivity(intent);
+
     }
 });
 
@@ -82,8 +93,9 @@ startActivity(intent);
                 return noteViewHolder;
             }
         };
-mNOtesList.setAdapter(adapter);
-adapter.startListening();
+
+         mNOtesList.setAdapter(adapter);
+        adapter.startListening();
     }
 
 
